@@ -2,7 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
   title: string;
-  requirements: string[]
+  requirements: string[];
+  image?: string;
+  form?: string;
 }
 
 export default (req: NextApiRequest, res: NextApiResponse<Data[]>) => {
@@ -14,19 +16,24 @@ export default (req: NextApiRequest, res: NextApiResponse<Data[]>) => {
     },
     {
       title: 'Anfitriões NJ',
-      requirements: ['6 meses de NIB', 'Aprovação Pastoral Posterior']
+      requirements: ['6 meses de NIB', 'Aprovação Pastoral Posterior'],
+      image: 'anfitrioes.jpeg'
     },
     {
       title: 'Apoio Técnico',
-      requirements: ['Estar fazendo Um com Deus', 'Gostar de Aprender e Servir']
+      requirements: ['Estar fazendo Um com Deus', 'Gostar de Aprender e Servir'],
+      image: 'apoio_tecnico.jpeg',
+      form: 'https://forms.gle/42nfeHUhrE3k6VXe7'
     },
     {
       title: 'Arte e Vida',
-      requirements: ['1 Ano de NIB', 'Disponibilidade sábado pela manhã', 'Um com Deus', 'GA', 'Maior de 18 Anos']
+      requirements: ['1 Ano de NIB', 'Disponibilidade sábado pela manhã', 'Um com Deus', 'GA', 'Maior de 18 Anos'],
+      image: 'arte_vida.jpeg',
+      form: 'https://forms.gle/ggPKjJNpYB96b3Dm7'
     },
     {
       title: 'Clubinhos',
-      requirements: ['1 Ano de NIB', 'Participar do treinamento', 'Disponibilidade aos sábados (Informe-se)']
+      requirements: ['1 Ano de NIB', 'Participar do treinamento', 'Disponibilidade aos sábados (Informe-se)'],
     },
     {
       title: 'Ballet',
@@ -96,7 +103,8 @@ export default (req: NextApiRequest, res: NextApiResponse<Data[]>) => {
     },
     {
       title: 'Música',
-      requirements: ['6 meses de NIB']
+      requirements: ['6 meses de NIB'],
+      image: 'musica.jpeg'
     },
     {
       title: 'Amor em Ação',
@@ -105,7 +113,8 @@ export default (req: NextApiRequest, res: NextApiResponse<Data[]>) => {
           'Um com Deus',
           '6 meses de NIB',
           'Disponibilidade para visitas'
-        ]
+        ],
+      image: 'amor_em_acao.jpeg'
     },
     {
       title: 'Orquestra',
@@ -113,7 +122,8 @@ export default (req: NextApiRequest, res: NextApiResponse<Data[]>) => {
     },
     {
       title: 'Pantomima',
-      requirements: ['Frequentando a partir do Sonho de Natal']
+      requirements: ['Frequentando a partir do Sonho de Natal'],
+      image: 'pantomima.png'
     },
     {
       title: 'Palco Artístico',
@@ -127,7 +137,9 @@ export default (req: NextApiRequest, res: NextApiResponse<Data[]>) => {
           'Ter condições de comprar um patins',
           'Ter tempo integral a partir do Sonho de Natal',
           'Não precisa saber andar de patins'
-        ]
+        ],
+      image: 'patins.jpeg',
+      form: 'https://forms.gle/YXUjUaS6N5ggEWjC7'
     },
     {
       title: 'Percussão',
@@ -155,7 +167,8 @@ export default (req: NextApiRequest, res: NextApiResponse<Data[]>) => {
           ' Gostar de escrever',
           'Cumprir prazos',
           'Ter acesso a e-mail'
-        ]
+        ],
+      image: 'roteiro.jpeg'
     },
     {
       title: 'Secretáriado Senib',

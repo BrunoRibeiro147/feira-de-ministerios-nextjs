@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { GetServerSideProps } from 'next';
 import {
   Grid,
   Box,
@@ -8,35 +9,31 @@ import {
 import { FiSearch } from 'react-icons/fi';
 import { useStyles } from '../styles/index';
 import { Card } from '../components/Card/Card';
-import { IMinistry } from '../types/types'
+import { IMinistry } from '../types/types';
+import { client } from '../lib/prismic';
+import { Document } from 'prismic-javascript/types/documents'
 
-const Home: React.FC = () => {
+interface IHomeProps {
+  ministries: Document[]
+}
+
+const Home: React.FC<IHomeProps> = ({ ministries }) => {
   const classes = useStyles();
 
-  const [text, setText] = useState('');
-
-  const [ministries, setMinistries] = useState<IMinistry[]>([]);
-
-  const getMinistries = async () => {
-    const response = await fetch('/api/ministries');
-    const data = await response.json();
-    setMinistries(data);
-  }
-
-  useEffect(() => {
-    getMinistries()
-  }, []);
+  const [ministriesQuery, setMinistriesQuery] = useState<Document[]>(ministries);
 
   const handleFilterMininstries = (name: string) => {
     if (name.length > 0) {
-      const filteredMinistries = ministries.filter(row => row.title.includes(name));
+      const filteredMinistries =
+        ministriesQuery.filter(row => row.data.title[0].text.includes(name));
+
       if (filteredMinistries.length > 0) {
-        return setMinistries(filteredMinistries);
+        return setMinistriesQuery(filteredMinistries);
       } else {
-        getMinistries();
+        setMinistriesQuery(ministries)
       }
     }
-    getMinistries();
+    setMinistriesQuery(ministries)
   }
 
   return (
@@ -122,18 +119,37 @@ const Home: React.FC = () => {
             </Box>
           </Box>
 
-          {ministries.map(ministry => (
-            <Card
-              key={ministry.title}
-              title={ministry.title}
-              requirements={ministry.requirements}
-            />
-          ))}
+          {ministriesQuery.map(ministry => {
+            return (
+              <Card
+                key={ministry.id}
+                title={ministry.data.title[0].text}
+                requirements={ministry.data.requirements}
+                image={ministry.data.image.url}
+                form={ministry.data.form.url}
+              />
+            )
+          })
+          }
 
         </Box>
       </Grid>
     </Box>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+
+  const response = await client().query("");
+
+  const ministries = response.results;
+
+  return {
+    props: {
+      ministries
+    }
+  }
+
 };
 
 export default Home;
