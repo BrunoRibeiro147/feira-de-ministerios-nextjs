@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) => {
 
 		attentionSectionsubTitle: {
 			fontSize: 14,
-			lineHeight: '16px',
+			lineHeight: '21px',
 			fontFamily: 'Montserrat',
 			textAlign: 'center',
 			fontWeight: 600,
@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme: Theme) => {
 			flexDirection: 'column',
 			justifyContent: 'space-between',
 			backgroundColor: theme.palette.text.primary,
-			height: 413,
+			height: 150,
 			marginTop: 75,
 		},
 

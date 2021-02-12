@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
 	Grid,
 	Box,
@@ -8,11 +8,36 @@ import {
 import { FiSearch } from 'react-icons/fi';
 import { useStyles } from '../styles/index';
 import { Card } from '../components/Card/Card';
+import { IMinistry } from '../types/types'
 
 const Home: React.FC = () => {
 	const classes = useStyles();
 
 	const [text, setText] = useState('');
+
+	const [ministries, setMinistries] = useState<IMinistry[]>([]);
+
+	const getMinistries = async () => {
+		const response = await fetch('/api/ministries');
+		const data = await response.json();
+		setMinistries(data);
+	}
+
+	useEffect(() => {
+		getMinistries()
+	}, []);
+
+	const handleFilterMininstries = (name: string) => {
+		if (name.length > 0) {
+			const filteredMinistries = ministries.filter(row => row.title.includes(name));
+			if (filteredMinistries.length > 0) {
+				return setMinistries(filteredMinistries);
+			} else {
+				getMinistries();
+			}
+		}
+		getMinistries();
+	}
 
 	return (
 		<Box>
@@ -72,31 +97,14 @@ const Home: React.FC = () => {
 				</Box>
 
 				<Box className={classes.requirementsSection}>
-					<Box className={classes.container}>
-						<Typography className={classes.attentionSectionTitle} style={{ marginBottom: 23 }}>
-							Legenda de Pré-Requisitos
-						</Typography>
-						<p className={classes.paragraphWhite}>
-							1.  Ter concluído “Um Com Deus”; estar cursando; ou se compromete
-							em se inscrever na próxima turma.
+					<Typography className={classes.attentionSectionTitle}>
+						Pré-Requisitos
+					</Typography>
+					<p className={classes.attentionSectionsubTitle}>
+						Lembrando que os ministérios possuem pré-requisitos, então leia
+						com bastante atenção, para não se candidatar a um ministéio que
+						você não atende e assim se frustar!
 						</p>
-						<p className={classes.paragraphWhite}>2.  Ser batizado.</p>
-						<p className={classes.paragraphWhite}>
-							3.  Frequentar regularmente Grupo de Amigos e SENIB.
-						</p>
-						<p className={classes.paragraphWhite}>
-							4.  Frequentar os cultos com regularidade.
-						</p>
-						<p className={classes.paragraphWhite}>
-							5.  Amar as crianças, adolescentes ou jovens.
-						</p>
-						<p className={classes.paragraphWhite}>
-							6.  Ter pelo menos um ano de igreja.
-						</p>
-						<p className={classes.paragraphWhite}>7.  Caso esteja em união conjugal,
-						necessita ser casado legalmente e não união estável ou amigado.
-						</p>
-					</Box>
 				</Box>
 
 				<Box style={{ margin: '0 8%', }}>
@@ -106,19 +114,18 @@ const Home: React.FC = () => {
 								className={classes.searchInput}
 								InputProps={{ className: classes.input, disableUnderline: true }}
 								placeholder="Pesquisar Ministério..."
-								value={text}
-								onChange={(e) => setText(e.target.value)}
+								onChange={(e) => handleFilterMininstries(e.target.value)}
 							/>
 							<Box className={classes.searchIconContainer}>
 								<FiSearch size="21" color="#FFFCF5" />
 							</Box>
 						</Box>
 					</Box>
-					<Card />
-					<Card />
-					<Card />
-					<Card />
-					<Card />
+
+					{ministries.map(ministry => (
+						<Card key={ministry.title} title={ministry.title} requirements={ministry.requirements} />
+					))}
+
 				</Box>
 			</Grid>
 		</Box>

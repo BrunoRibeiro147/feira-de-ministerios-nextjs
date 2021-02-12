@@ -15,11 +15,20 @@ const useStyles = makeStyles((theme) => {
 			lineHeight: '19px'
 		},
 
+		cardRequirement: {
+			marginTop: 16,
+			fontFamily: 'Montserrat',
+			fontSize: 12,
+			fontWeight: 400,
+			lineHeight: '19px',
+		},
+
 		cardSubtitle: {
 			marginTop: 8,
 			fontFamily: 'Source Sans Pro',
 			fontSize: 12,
 			lineHeight: '18px',
+			listStyleType: 'none'
 		},
 
 		cardButton: {

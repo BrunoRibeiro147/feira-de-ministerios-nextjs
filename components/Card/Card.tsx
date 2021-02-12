@@ -9,9 +9,10 @@ import {
 	Divider
 } from '@material-ui/core'
 import { useStyles } from './styles'
+import { ICardProps } from './types'
 
 
-const Card: React.FC = () => {
+const Card: React.FC<ICardProps> = ({ title, requirements }) => {
 	const classes = useStyles();
 
 	return (
@@ -27,14 +28,21 @@ const Card: React.FC = () => {
 				/>
 				<CardContent>
 					<Typography className={classes.cardTitle}>
-						Ministério de Música
-          </Typography>
-					<Typography className={classes.cardSubtitle}>
-						Venha servir conosco!
-          </Typography>
-					<Typography className={classes.cardSubtitle}>
-						Requisitos: 1 - 2 - 3 - 4 - 5 - 6 - 7
-          </Typography>
+						{title}
+					</Typography>
+					<Typography className={classes.cardRequirement}>
+						Requisitos:
+					</Typography>
+					<ul style={{ padding: '0' }}>
+						{requirements.map((requirement, index) => (
+							<li
+								key={index}
+								className={classes.cardSubtitle}
+							>
+								{`- ${requirement}`}
+							</li>
+						))}
+					</ul>
 				</CardContent>
 				<Divider style={{ margin: '0 auto', width: '95%' }} />
 			</CardActionArea>
