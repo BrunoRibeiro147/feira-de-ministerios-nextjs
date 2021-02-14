@@ -161,7 +161,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const response = await client().query("");
 
-  const ministries = response.results;
+  const data = response.results;
+
+  const ministries = data.sort((a, b) => a.data.title[0].text > b.data.title[0].text ? 1 : -1);
 
   return {
     props: {
