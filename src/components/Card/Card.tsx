@@ -6,7 +6,8 @@ import {
   CardContent,
   Button,
   CardActions,
-  Divider
+  Divider,
+  Box,
 } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { useStyles } from './styles'
@@ -27,7 +28,7 @@ const Card: React.FC<ICardProps> = (props) => {
 
   return (
     <MaterialCard className={classes.card}>
-      <CardActionArea>
+      <CardActionArea className={classes.disableHoverCard}>
         <CardMedia
           component="img"
           alt="Ministério"
@@ -36,7 +37,8 @@ const Card: React.FC<ICardProps> = (props) => {
           title="Ministério"
           style={{ padding: 12, objectFit: 'contain' }}
         />
-        <CardContent>
+        <Divider style={{ opacity: 0.7 }} />
+        <CardContent style={{ height: 270 }}>
           <Typography className={classes.cardTitle}>
             {title}
           </Typography>
@@ -54,14 +56,14 @@ const Card: React.FC<ICardProps> = (props) => {
             ))}
           </ul>
         </CardContent>
-        <Divider style={{ margin: '0 auto', width: '95%' }} />
+        <Divider />
       </CardActionArea>
       <CardActions>
         <Button className={classes.cardButton} onClick={() => handleRedirectToForm()}>
           <Typography
             className={classes.cardButtonText}>
             Increva-se
-					</Typography>
+              </Typography>
         </Button>
       </CardActions>
     </MaterialCard>
