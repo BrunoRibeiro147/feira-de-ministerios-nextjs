@@ -1,6 +1,11 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles, Theme } from '@material-ui/core'
+import { red } from '@material-ui/core/colors';
 
-const useStyles = makeStyles((theme) => {
+interface IMakeStyles {
+  finished: boolean;
+}
+
+const useStyles = makeStyles<Theme, IMakeStyles>((theme: Theme) => {
   return {
     card: {
       maxWidth: 345,
@@ -39,17 +44,17 @@ const useStyles = makeStyles((theme) => {
       listStyleType: 'none'
     },
 
-    cardButton: {
+    cardButton: props => ({
       marginTop: 8,
       height: 40,
       width: '100%',
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: !props.finished ? theme.palette.primary.main : red[600],
       color: theme.palette.background.paper,
       borderRadius: 6,
       '&:hover': {
-        backgroundColor: '#D9A933'
+        backgroundColor: !props.finished ? '#D9A933' : red[700],
       },
-    },
+    }),
 
     cardButtonText: {
       fontFamily: 'Montserrat',

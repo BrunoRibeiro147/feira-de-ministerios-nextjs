@@ -73,7 +73,7 @@ const Home: React.FC<IHomeProps> = ({ ministries }) => {
               <Typography className={classes.informativeTitle}>Informativos</Typography>
               <p className={classes.paragraph}>Servir a Deus é um <strong>grande
                 privilégio!!!</strong> Leia com <strong>atenção</strong> quais são os
-                ministérios disponíveis e inscreva-se naquele(s)
+                ministérios disponíveis e inscreva-se naquele
                 que acha que poderá participar com alegria e compromisso,
                 exercitando os seus dons e talentos.
               </p>
@@ -83,24 +83,16 @@ const Home: React.FC<IHomeProps> = ({ ministries }) => {
               funciona o ministério e treinamento se necessário.
 				    	</p>
 
-              <p className={classes.paragraph}>Inscreva-se em até{' '}
-                <strong>4 ministérios</strong>, indicando-os conforme abaixo:
-					    </p>
-
-              <p className={classes.paragraph}><strong>Primeira Opção:</strong> para
-					      o que mais gostaria de fazer;
-				    	</p>
-
-              <p className={classes.paragraph}><strong>Segunda Opção;</strong></p>
-
-              <p className={classes.paragraph}><strong>Terceira Opção;</strong></p>
-
-              <p className={classes.paragraph}><strong>Quarta Opção.</strong></p>
-
-              <p className={classes.paragraph}>Você será inserido em suas opções
-              conforme a necessidade de cada ministério. Ao lado de cada ministério
-                  encontram-se alguns <strong>números que são os pré-requisitos
-                  para ministério.</strong>
+              <p className={classes.paragraph}>
+                Verifique as informações sobre testes, envio de vídeos e
+                principalmente os requisitos, para não acontecer de não
+                ser selecionado. Cada jovem só pode se inscrever{" "}
+                <strong>UMA VEZ</strong>. Não faça outra inscrição pois não
+                valerá. <strong>SEMPRE VALERÁ A PRIMEIRA QUE VOCÊ FEZ</strong>,{" "}
+                Por isso ore antes e faça com calma. Caso não tenha mais vaga,
+                ou você não for aprovado, ou não preencher os requisitos,
+                você poderá ser remetido a outro ministério que você indicou
+                como outras opções no Formulário de Inscrição.
               </p>
             </Box>
             <Box display={{ xs: 'none', lg: 'block' }}>
@@ -116,7 +108,7 @@ const Home: React.FC<IHomeProps> = ({ ministries }) => {
 				</Typography>
         <p className={classes.attentionSectionsubTitle}>
           Lembrando que os ministérios possuem pré-requisitos, então leia
-          com bastante atenção, para não se candidatar a um ministéio que
+          com bastante atenção, para não se candidatar a um ministério que
           você não atende e assim se frustar!
 				</p>
       </Box>
@@ -146,6 +138,7 @@ const Home: React.FC<IHomeProps> = ({ ministries }) => {
                 requirements={ministry.data.requirements}
                 image={ministry.data.image.url}
                 form={ministry.data.form.url}
+                finished={ministry.data.finished}
               />
             </Grid>
           ))}
@@ -169,7 +162,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       ministries,
     },
-    revalidate: 10,
+    revalidate: 2,
   }
 
 };

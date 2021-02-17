@@ -15,8 +15,8 @@ import { ICardProps } from './types'
 
 
 const Card: React.FC<ICardProps> = (props) => {
-  const { title, requirements, image, form } = props
-  const classes = useStyles();
+  const { title, requirements, image, form, finished } = props;
+  const classes = useStyles({ finished });
   const router = useRouter();
 
   const handleRedirectToForm = () => {
@@ -27,7 +27,7 @@ const Card: React.FC<ICardProps> = (props) => {
   }
 
   return (
-    <MaterialCard className={classes.card}>
+    <MaterialCard className={classes.card} elevation={4}>
       <CardActionArea className={classes.disableHoverCard}>
         <CardMedia
           component="img"
@@ -59,11 +59,13 @@ const Card: React.FC<ICardProps> = (props) => {
         <Divider />
       </CardActionArea>
       <CardActions>
-        <Button className={classes.cardButton} onClick={() => handleRedirectToForm()}>
+        <Button
+          className={classes.cardButton}
+          onClick={() => { !finished && handleRedirectToForm() }}>
           <Typography
             className={classes.cardButtonText}>
-            Increva-se
-              </Typography>
+            {!finished ? 'Increva-se' : 'Esgotado'}
+          </Typography>
         </Button>
       </CardActions>
     </MaterialCard>

@@ -3,4 +3,5 @@ export type ICardProps = {
   requirements: [{ text: string }]
   image: string;
   form: string;
+  finished?: boolean;
 }
