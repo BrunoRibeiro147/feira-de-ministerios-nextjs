@@ -32,13 +32,13 @@ const Card: React.FC<ICardProps> = (props) => {
         <CardMedia
           component="img"
           alt="Ministério"
-          height="192"
+          height="172"
           image={image || '/novajovens.png'}
           title="Ministério"
           style={{ padding: 12, objectFit: 'contain' }}
         />
         <Divider style={{ opacity: 0.7 }} />
-        <CardContent style={{ height: 270 }}>
+        <CardContent style={{ height: 310 }}>
           <Typography className={classes.cardTitle}>
             {title}
           </Typography>
