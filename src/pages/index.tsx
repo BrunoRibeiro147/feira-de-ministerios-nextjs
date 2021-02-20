@@ -152,7 +152,7 @@ const Home: React.FC<IHomeProps> = ({ ministries }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const response = await client().query("");
+  const response = await client().query("", { pageSize: 50 });
 
   const data = response.results;
 
