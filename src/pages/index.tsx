@@ -12,6 +12,7 @@ import { Card } from '../components/Card/Card';
 import { Header } from '../components/Header/Header'
 import { client } from '../lib/prismic';
 import { Document } from 'prismic-javascript/types/documents';
+import Link from 'next/link'
 
 interface IHomeProps {
   ministries: Document[]
@@ -143,6 +144,15 @@ const Home: React.FC<IHomeProps> = ({ ministries }) => {
             </Grid>
           ))}
         </Grid>
+
+        <Link href="https://beacons.page/bruno_ribeiro">
+          <a target="_blank" rel="noreferrer" className={classes.containerMe}>
+            <Typography className={classes.textMe}>
+              Criado por: Bruno Ribeiro
+            </Typography>
+          </a>
+        </Link>
+
 
 
       </Box>

@@ -194,6 +194,20 @@ const useStyles = makeStyles((theme: Theme) => {
       height: 32,
       width: 32,
       borderRadius: '0 8px 8px 0',
+    },
+
+    containerMe: {
+      display: "flex",
+      justifyContent: "center",
+      marginTop: 24,
+      textDecoration: 'none',
+    },
+
+    textMe: {
+      fontSize: 14,
+      fontWeight: 300,
+      fontStyle: 'italic',
+      color: 'grey',
     }
 
   }
