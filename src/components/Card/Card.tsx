@@ -64,7 +64,7 @@ const Card: React.FC<ICardProps> = (props) => {
           onClick={() => { !finished && handleRedirectToForm() }}>
           <Typography
             className={classes.cardButtonText}>
-            {!finished ? 'Increva-se' : 'Esgotado'}
+            {!finished ? 'Inscreva-se' : 'Esgotado'}
           </Typography>
         </Button>
       </CardActions>
