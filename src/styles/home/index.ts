@@ -208,6 +208,15 @@ const useStyles = makeStyles((theme: Theme) => {
       fontWeight: 300,
       fontStyle: 'italic',
       color: 'grey',
+    },
+
+    imageAcademic: {
+      height: 250,
+      width: 250,
+      [theme.breakpoints.up('md')]: {
+        height: 450,
+        width: 450,
+      }
     }
 
   }
