@@ -10,7 +10,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Head>
-          <title>Feira de Ministérios 2021</title>
+          <title>Nova Jovens</title>
         </Head>
         <Component {...pageProps} />
       </ThemeProvider>

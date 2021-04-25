@@ -2,14 +2,13 @@ import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 import Link from 'next/link'
 import { useStyles } from '../styles/home/index';
-import { Header } from '../components/Header/Header';
+import { Header } from '../components';
 
 const Home: React.FC = () => {
   const classes = useStyles();
 
   return (
     <Box>
-
       <Box className={classes.container}>
         <Header />
         <Box className={classes.welcomeContainer}>
@@ -29,7 +28,10 @@ const Home: React.FC = () => {
         </Box>
       </Box>
 
-      <Box className={classes.attentionSection} style={{ backgroundColor: '#6C63FF' }}>
+      <Box
+        className={classes.attentionSection}
+        style={{ backgroundColor: '#6C63FF' }}
+      >
         <Typography className={classes.attentionSectionTitle}>
           Escolha seu Clube!
 				</Typography>

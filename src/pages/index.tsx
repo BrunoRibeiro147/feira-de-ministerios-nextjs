@@ -8,8 +8,7 @@ import {
 } from '@material-ui/core';
 import { FiSearch } from 'react-icons/fi';
 import { useStyles } from '../styles/home/index';
-import { Card } from '../components/Card/Card';
-import { Header } from '../components/Header/Header'
+import { Card, Header } from '../components';
 import { client } from '../lib/prismic';
 import { Document } from 'prismic-javascript/types/documents';
 import Link from 'next/link'
