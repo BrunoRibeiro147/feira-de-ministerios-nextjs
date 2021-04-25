@@ -22,7 +22,7 @@ const Home: React.FC = () => {
                 Congresso Despertar
 				      </Typography>
               <Typography className={classes.subTitle}>
-                Oficinas que mudaram lhe despertar para um verdadeiro
+                Oficinas que lhe faram despertar para um verdadeiro
                 relacionamento com Deus
 				      </Typography>
             </Box>
