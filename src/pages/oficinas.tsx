@@ -19,6 +19,8 @@ interface IHomeProps {
 const Home: React.FC<IHomeProps> = ({ workshops }) => {
   const classes = useStyles();
 
+  console.log(workshops[0]);
+
   return (
     <Box>
       <Box className={classes.container}>
@@ -30,7 +32,7 @@ const Home: React.FC<IHomeProps> = ({ workshops }) => {
                 Congresso Despertar
               </Typography>
               <Typography className={classes.subTitle}>
-                Oficinas que lhe faram despertar para um verdadeiro
+                Oficinas que lhe farão despertar para um verdadeiro
                 relacionamento com Deus
 				      </Typography>
             </Box>
@@ -61,12 +63,13 @@ const Home: React.FC<IHomeProps> = ({ workshops }) => {
           style={{ justifyContent: "space-between" }}
           spacing={4}
         >
-          {workshops.map(wordshop => (
-            <Grid key={wordshop.id} item lg={4} md={6} sm={12} xs={12}>
+          {workshops.map(workshop => (
+            <Grid key={workshop.id} item lg={4} md={6} sm={12} xs={12}>
               <WorkshopCard
-                key={wordshop.id}
-                title={wordshop.data.oficina[0].text}
-                link={wordshop.data.link_oficin.url}
+                key={workshop.id}
+                title={workshop.data.oficina[0].text}
+                link={workshop.data.link_oficina.url}
+                image={workshop.data.image.url}
               />
             </Grid>
           ))}

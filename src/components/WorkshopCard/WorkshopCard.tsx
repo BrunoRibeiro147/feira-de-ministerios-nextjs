@@ -15,9 +15,8 @@ import { ICardProps } from './types'
 
 
 const WorkshopCard: React.FC<ICardProps> = (props) => {
-  const { title, link } = props;
+  const { title, link, image } = props;
   const classes = useStyles();
-  const router = useRouter();
 
   return (
     <MaterialCard className={classes.card} elevation={4}>
@@ -26,9 +25,9 @@ const WorkshopCard: React.FC<ICardProps> = (props) => {
           component="img"
           alt="Oficina"
           height="172"
-          image={'/congresso_despertar.png'}
+          image={image || '/congresso_despertar.png'}
           title="Oficina"
-          style={{ padding: 12, objectFit: 'cover' }}
+          style={{ padding: 12, objectFit: 'contain' }}
         />
         <Divider style={{ opacity: 0.7 }} />
         <CardContent style={{ height: 70 }}>
