@@ -19,8 +19,6 @@ const WorkshopCard: React.FC<ICardProps> = (props) => {
   const classes = useStyles();
   const router = useRouter();
 
-  const handleRedirectToForm = () => router.push(link);
-
   return (
     <MaterialCard className={classes.card} elevation={4}>
       <CardActionArea className={classes.disableHoverCard}>
@@ -28,9 +26,9 @@ const WorkshopCard: React.FC<ICardProps> = (props) => {
           component="img"
           alt="Oficina"
           height="172"
-          image={'/novajovens.png'}
+          image={'/congresso_despertar.png'}
           title="Oficina"
-          style={{ padding: 12, objectFit: 'contain' }}
+          style={{ padding: 12, objectFit: 'cover' }}
         />
         <Divider style={{ opacity: 0.7 }} />
         <CardContent style={{ height: 70 }}>
