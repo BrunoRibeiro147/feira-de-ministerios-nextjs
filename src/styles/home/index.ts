@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) => {
       justifyContent: 'space-between',
       alignItems: 'center',
       backgroundColor: theme.palette.primary.main,
-      height: 125,
+      height: 165,
       marginTop: 175,
       [theme.breakpoints.up('md')]: {
         height: 250,

@@ -15,7 +15,13 @@ import { ICardProps } from './types'
 
 
 const WorkshopCard: React.FC<ICardProps> = (props) => {
-  const { title, link, image } = props;
+  const {
+    title,
+    link,
+    image,
+    buttonText = 'Vá para Oficina',
+    buttonColor,
+  } = props;
   const classes = useStyles();
 
   return (
@@ -43,11 +49,13 @@ const WorkshopCard: React.FC<ICardProps> = (props) => {
         >
           <Button
             className={classes.cardButton}
+            style={{ backgroundColor: buttonColor }}
           >
             <Typography
-              className={classes.cardButtonText}>
-              Vá para Oficina
-          </Typography>
+              className={classes.cardButtonText}
+            >
+              {buttonText}
+            </Typography>
           </Button>
         </Link>
       </CardActions>
