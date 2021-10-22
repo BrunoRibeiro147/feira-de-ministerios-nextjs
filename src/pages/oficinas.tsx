@@ -10,6 +10,7 @@ import { Header, WorkshopCard } from '../components'
 import { GetStaticProps } from 'next';
 import { client } from '../lib/prismic_workshops';
 import { Document } from 'prismic-javascript/types/documents';
+import Prismic from 'prismic-javascript';
 
 
 interface IHomeProps {
@@ -34,7 +35,7 @@ const Home: React.FC<IHomeProps> = ({ workshops }) => {
               <Typography className={classes.subTitle}>
                 Oficinas que lhe farão despertar para um verdadeiro
                 relacionamento com Deus
-				      </Typography>
+              </Typography>
             </Box>
             <Box display={{ xs: 'none', lg: 'block' }}>
               <img src="/lightbulb.svg" alt="" height="485px" width="455px" />
@@ -81,7 +82,9 @@ const Home: React.FC<IHomeProps> = ({ workshops }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const response = await client().query("", { pageSize: 50 });
+  const response = await client().query(
+    Prismic.Predicates.at('document.type', 'oficina'), { pageSize: 50 }
+  );
 
   const data = response.results;
 
