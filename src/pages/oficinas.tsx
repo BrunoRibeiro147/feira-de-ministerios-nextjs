@@ -20,8 +20,6 @@ interface IHomeProps {
 const Home: React.FC<IHomeProps> = ({ workshops }) => {
   const classes = useStyles();
 
-  console.log(workshops[0]);
-
   return (
     <Box>
       <Box className={classes.container}>
