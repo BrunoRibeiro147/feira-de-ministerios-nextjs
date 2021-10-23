@@ -69,6 +69,8 @@ const Home: React.FC<IHomeProps> = ({ workshops }) => {
                 link={workshop.data.link_oficina.url}
                 image={"/logo_seminario.jpeg"}
                 buttonColor="#068b77"
+                disabled={workshop.data.inativo}
+                comments={workshop.data.observacoes[0]?.text}
               />
             </Grid>
           ))}

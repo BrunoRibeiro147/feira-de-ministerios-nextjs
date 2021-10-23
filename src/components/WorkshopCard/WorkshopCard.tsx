@@ -21,8 +21,10 @@ const WorkshopCard: React.FC<ICardProps> = (props) => {
     image,
     buttonText = 'Vá para Oficina',
     buttonColor,
+    disabled = false,
+    comments,
   } = props;
-  const classes = useStyles();
+  const classes = useStyles({ disabled });
 
   return (
     <MaterialCard className={classes.card} elevation={4}>
@@ -40,6 +42,9 @@ const WorkshopCard: React.FC<ICardProps> = (props) => {
           <Typography className={classes.cardTitle}>
             {title}
           </Typography>
+          <Typography className={classes.cardSubtitle}>
+            {comments}
+          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
@@ -49,7 +54,8 @@ const WorkshopCard: React.FC<ICardProps> = (props) => {
         >
           <Button
             className={classes.cardButton}
-            style={{ backgroundColor: buttonColor }}
+            style={{ backgroundColor: !disabled ? buttonColor : '#c4c4c4' }}
+            disabled={disabled}
           >
             <Typography
               className={classes.cardButtonText}

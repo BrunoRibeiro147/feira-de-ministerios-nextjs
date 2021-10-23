@@ -3,5 +3,7 @@ export type ICardProps = {
   link: string;
   image?: string;
   buttonText?: string;
-  buttonColor?: string
+  buttonColor?: string;
+  disabled?: boolean;
+  comments?: string;
 }
